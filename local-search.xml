@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>RocketMQ消费限流</title>
+    <link href="/2024/01/20/RocketMQ%E6%B6%88%E8%B4%B9%E9%99%90%E6%B5%81/"/>
+    <url>/2024/01/20/RocketMQ%E6%B6%88%E8%B4%B9%E9%99%90%E6%B5%81/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h2><ol><li>在RocketMQ中一个topic会有多个messageQueue，如果是分区顺序消息的话RocketMQ保证发送端对于同一个sharding key都发送到一个messageQueue</li><li>在集群消费模式下，一个topic的某一个messageQueue与consumer是多对一的关系，并不能一对多，即多个消费者不能消费同一个messageQueue的消息<br> <img src="https://s2.loli.net/2024/01/20/CGVpn6KDWZSEPem.png" alt="RockeMQ-队列与消费者的关系"></li><li>如果要保证消息的顺序性，需要发送端和消费端都采用顺序的方式。反例：以上图为例，若某一个key的消息都发送到queue1中，对于consumer1是采用并发消费的方式的话并不能保证消息的顺序性，对于发送端同理<br> <img src="https://s2.loli.net/2024/01/20/keMqScfy4JYNZWd.png" alt="RocketMQ-生产顺序性与消费性组合"></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>RocketMQ</tag>
+      
+      <tag>限流</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
