@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/my-avatar.jpg">
+  <link rel="icon" href="/img/my-avatar.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="前置 在RocketMQ中一个topic会有多个messageQueue，如果是分区顺序消息的话RocketMQ保证发送端对于同一个sharding key都发送到一个messageQueue  在集群消费模式下，一个topic的某一个messageQueue与consumer是多对一的关系，并不能一对多，即多个消费者不能消费同一个messageQueue的消息     如果要保证消息的顺序性，需">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/01/20/XR6uH7l4aGKYyIi.png">
+<meta property="og:image" content="https://s2.loli.net/2024/01/20/KQNPvkoElcXe5Rj.png">
 <meta property="article:published_time" content="2024-01-19T16:38:26.000Z">
-<meta property="article:modified_time" content="2024-01-20T09:47:02.371Z">
+<meta property="article:modified_time" content="2024-01-20T15:20:58.971Z">
 <meta property="article:author" content="b-dttb">
 <meta property="article:tag" content="RocketMQ">
 <meta property="article:tag" content="限流">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2024/01/20/XR6uH7l4aGKYyIi.png">
+<meta name="twitter:image" content="https://s2.loli.net/2024/01/20/KQNPvkoElcXe5Rj.png">
   
   
   
@@ -305,10 +305,10 @@
 <li><p>在RocketMQ中一个topic会有多个messageQueue，如果是分区顺序消息的话RocketMQ保证发送端对于同一个sharding key都发送到一个messageQueue</p>
 </li>
 <li><p>在集群消费模式下，一个topic的某一个messageQueue与consumer是多对一的关系，并不能一对多，即多个消费者不能消费同一个messageQueue的消息</p>
- <img src=https://s2.loli.net/2024/01/20/CGVpn6KDWZSEPem.png alt="RocketMQ-队列与消费者的关系" width=80% />
+ <div align=center><img src=https://s2.loli.net/2024/01/20/CGVpn6KDWZSEPem.png alt="RocketMQ-队列与消费者的关系" width=70% /></div>
  </li>
 <li><p>如果要保证消息的顺序性，需要发送端和消费端都采用顺序的方式。反例：以上图为例，若某一个key的消息都发送到queue1中，对于consumer1是采用并发消费的方式的话并不能保证消息的顺序性，对于发送端同理</p>
- <img src=https://s2.loli.net/2024/01/20/keMqScfy4JYNZWd.png alt="RocketMQ-生产顺序性和消费顺序性组合" width=80% /></li>
+ <div align=center><img src=https://s2.loli.net/2024/01/20/keMqScfy4JYNZWd.png alt="RocketMQ-生产顺序性和消费顺序性组合" width=80% /></div></li>
 </ol>
 <h2 id="积压原因"><a href="#积压原因" class="headerlink" title="积压原因"></a>积压原因</h2><p>上游发消息发的是顺序消息，且短时间内可能有大量的消息过来</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
@@ -318,7 +318,7 @@
 </ol>
 <h2 id="最终采用的方案-对消费端进行限制"><a href="#最终采用的方案-对消费端进行限制" class="headerlink" title="最终采用的方案-对消费端进行限制"></a>最终采用的方案-对消费端进行限制</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SentinelResource(value = &quot;自定义资源名&quot;, </span><br><span class="hljs-meta">                  blockHandler = &quot;handleMsgBlockHandler&quot;, </span><br><span class="hljs-meta">                  entryType = EntryType.IN)</span><br><span class="hljs-keyword">public</span> Action <span class="hljs-title function_">consume</span><span class="hljs-params">(Message message, ConsumeContext context)</span> &#123;<br>	<span class="hljs-comment">// 消费业务逻辑</span><br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 限流降级</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> Action <span class="hljs-title function_">handleMsgBlockHandler</span><span class="hljs-params">(Message message, ConsumeContext context, BlockException ex)</span> &#123;<br>	<br>    log.warn(<span class="hljs-string">&quot;trigger sentinel blockHandler, msg:[&#123;&#125;]&quot;</span>, message, ex); <br>    <span class="hljs-keyword">return</span> Action.ReconsumeLater;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="修改消费者线程数"><a href="#修改消费者线程数" class="headerlink" title="修改消费者线程数"></a>修改消费者线程数</h3><h2 id="RocketMQ源码分析"><a href="#RocketMQ源码分析" class="headerlink" title="RocketMQ源码分析"></a>RocketMQ源码分析</h2><img src="https://s2.loli.net/2024/01/20/XR6uH7l4aGKYyIi.png" srcset="/img/loading.gif" lazyload alt="RocketMQ-消费逻辑">
+<h3 id="修改消费者线程数"><a href="#修改消费者线程数" class="headerlink" title="修改消费者线程数"></a>修改消费者线程数</h3><h2 id="RocketMQ源码分析"><a href="#RocketMQ源码分析" class="headerlink" title="RocketMQ源码分析"></a>RocketMQ源码分析</h2><div align=center><img src="https://s2.loli.net/2024/01/20/KQNPvkoElcXe5Rj.png" srcset="/img/loading.gif" lazyload alt="RocketMQ-消费逻辑"></div>
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li>RocketMQ官方文档 4.x，<a target="_blank" rel="noopener" href="https://rocketmq.apache.org/zh/docs/4.x/">https://rocketmq.apache.org/zh/docs/4.x/</a></li>
