@@ -16,15 +16,15 @@
   <meta name="author" content="b-dttb">
   <meta name="keywords" content="">
   
-    <meta name="description" content="设计表结构   字段 注释    id 自增主键   message_id 消息唯一标识   message_key    sharding_key    topic 消息的topic   tag 消息的tag   status 消息发送状态，0-待发送，1-已发送，2-发送失败   orderly 是否有序，0-无序，1-有序   send_time 发送次数，业务中可以设置最大重试数   bo">
+    <meta name="description" content="设计表结构   字段 注释    id 自增主键   message_id 消息唯一标识   message_key 业务key   sharding_key 分区key   topic 消息的topic   tag 消息的tag   status 消息发送状态，0-待发送，1-已发送，2-发送失败   orderly 是否有序，0-无序，1-有序   send_time 发送次数，业务中可以设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写一个本地消息表组件 —— 1. 写消息表">
 <meta property="og:url" content="https://b-dttb.github.io/2024/02/10/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-1-%E5%86%99%E6%B6%88%E6%81%AF%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="设计表结构   字段 注释    id 自增主键   message_id 消息唯一标识   message_key    sharding_key    topic 消息的topic   tag 消息的tag   status 消息发送状态，0-待发送，1-已发送，2-发送失败   orderly 是否有序，0-无序，1-有序   send_time 发送次数，业务中可以设置最大重试数   bo">
+<meta property="og:description" content="设计表结构   字段 注释    id 自增主键   message_id 消息唯一标识   message_key 业务key   sharding_key 分区key   topic 消息的topic   tag 消息的tag   status 消息发送状态，0-待发送，1-已发送，2-发送失败   orderly 是否有序，0-无序，1-有序   send_time 发送次数，业务中可以设置">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-10T07:32:25.000Z">
-<meta property="article:modified_time" content="2024-02-10T15:13:50.752Z">
+<meta property="article:modified_time" content="2024-02-16T13:58:27.796Z">
 <meta property="article:author" content="b-dttb">
 <meta property="article:tag" content="本地消息表">
 <meta property="article:tag" content="分布式事务">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          85 字
+          95 字
         
       </span>
     
@@ -316,11 +316,11 @@
 </tr>
 <tr>
 <td>message_key</td>
-<td></td>
+<td>业务key</td>
 </tr>
 <tr>
 <td>sharding_key</td>
-<td></td>
+<td>分区key</td>
 </tr>
 <tr>
 <td>topic</td>
@@ -355,7 +355,8 @@
 <td>更新时间</td>
 </tr>
 </tbody></table>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>定义一个</p>
+
                 
               </div>
             
