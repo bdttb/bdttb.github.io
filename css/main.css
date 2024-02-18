@@ -1155,6 +1155,7 @@ a:hover {
 }
 
 .index {
+  width: 40%;
   padding: 30px 40px;
   padding-bottom: 10px;
   background-color: white;
@@ -1164,7 +1165,7 @@ a:hover {
 }
 
 .friend-index .friend-list,
-.archives .post-list,
+.archives,
 .tag-index .tag-list,
 .about-index .markdown-body {
   padding: 30px 40px;
@@ -1588,6 +1589,7 @@ a:hover {
   width: calc(20% - 50px);
   font-size: 1.4rem;
   padding-left: 10px;
+
 }
 
 .post-catalog .title {
