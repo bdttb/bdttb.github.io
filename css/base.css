@@ -126,6 +126,9 @@ a:hover {
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
+.footer-views {
+  color: #666666;
+}
 
 .category-index .category-list {
   padding: 0 110px;
