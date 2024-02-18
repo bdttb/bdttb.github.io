@@ -34,10 +34,6 @@
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
   <!-- 代码块风格 -->
   
-    
-<link rel="stylesheet" href="/css/figcaption/mac-block.css">
-
-  
 
   <!-- jquery3.3.1 -->
   
@@ -203,7 +199,7 @@
 <li>提高消费者机器的配置</li>
 <li>排查消费端的性能问题，比如同步链路过长，锁的滥用等等</li>
 </ol>
-<h2 id="最终采用的方案-对消费端进行限制"><a href="#最终采用的方案-对消费端进行限制" class="headerlink" title="最终采用的方案-对消费端进行限制"></a>最终采用的方案-对消费端进行限制</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SentinelResource(value = &quot;自定义资源名&quot;, </span><br><span class="hljs-meta">                  blockHandler = &quot;handleMsgBlockHandler&quot;, </span><br><span class="hljs-meta">                  entryType = EntryType.IN)</span><br><span class="hljs-keyword">public</span> Action <span class="hljs-title function_">consume</span><span class="hljs-params">(Message message, ConsumeContext context)</span> &#123;<br>	<span class="hljs-comment">// 消费业务逻辑</span><br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 限流降级</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> Action <span class="hljs-title function_">handleMsgBlockHandler</span><span class="hljs-params">(Message message, ConsumeContext context, BlockException ex)</span> &#123;<br>	<br>    log.warn(<span class="hljs-string">&quot;trigger sentinel blockHandler, msg:[&#123;&#125;]&quot;</span>, message, ex); <br>    <span class="hljs-keyword">return</span> Action.ReconsumeLater;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="最终采用的方案-对消费端进行限制"><a href="#最终采用的方案-对消费端进行限制" class="headerlink" title="最终采用的方案-对消费端进行限制"></a>最终采用的方案-对消费端进行限制</h2><h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SentinelResource(value = &quot;自定义资源名&quot;, </span></span><br><span class="line"><span class="meta">                  blockHandler = &quot;handleMsgBlockHandler&quot;, </span></span><br><span class="line"><span class="meta">                  entryType = EntryType.IN)</span></span><br><span class="line"><span class="keyword">public</span> Action <span class="title function_">consume</span><span class="params">(Message message, ConsumeContext context)</span> &#123;</span><br><span class="line">	<span class="comment">// 消费业务逻辑</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 限流降级</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> Action <span class="title function_">handleMsgBlockHandler</span><span class="params">(Message message, ConsumeContext context, BlockException ex)</span> &#123;</span><br><span class="line">	</span><br><span class="line">    log.warn(<span class="string">&quot;trigger sentinel blockHandler, msg:[&#123;&#125;]&quot;</span>, message, ex); </span><br><span class="line">    <span class="keyword">return</span> Action.ReconsumeLater;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="修改消费者线程数"><a href="#修改消费者线程数" class="headerlink" title="修改消费者线程数"></a>修改消费者线程数</h3><h2 id="RocketMQ源码分析"><a href="#RocketMQ源码分析" class="headerlink" title="RocketMQ源码分析"></a>RocketMQ源码分析</h2><div align=center><img src="https://s2.loli.net/2024/01/20/KQNPvkoElcXe5Rj.png" alt="RocketMQ-消费逻辑"></div>
 
@@ -533,17 +529,6 @@
 
 
         
-  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
-    <a href="javascript: void(0)">
-      <i id="theme-icon" class="iconfont icon-moon"></i>
-    </a>
-  </div>
-
-  
-<script src="/js/colorscheme.js"></script>
-
-
-
 
 
         

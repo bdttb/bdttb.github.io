@@ -36,6 +36,9 @@ body.hidden {
 #app {
   position: relative;
   margin: 0 auto;
+  background-color: rgb(255 255 255/var(--tw-bg-opacity));
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle fill="%2364748b" cx="2" cy="2" r=".5"/></svg>');
+  background-repeat: repeat;
 }
 
 /*控制整个滚动条*/
@@ -82,7 +85,7 @@ a:hover {
 }
 
 .container {
-  width: 50%;
+  width: 37%;
   margin: 0 auto;
 }
 
@@ -91,7 +94,8 @@ a:hover {
 .archives .post-list,
 .tag-index .tag-list,
 .about-index .markdown-body {
-  padding: 0 40px;
+  padding: 30px 40px;
+  background-color: white;
 }
 
 .category-index .category-list {
