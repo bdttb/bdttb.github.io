@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 2024/1 
+      标签 
       
       
       |
@@ -106,95 +106,55 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="2024年阅读计划">
-        <div class="time-m-d">02-18</div>
-        <div class="title">
-          <a href="/2024/02/18/2024%E5%B9%B4%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/">
-            <span>2024年阅读计划</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="写一个本地消息表组件 —— 4. 接入测试">
-        <div class="time-m-d">02-16</div>
-        <div class="title">
-          <a href="/2024/02/16/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-4-%E6%8E%A5%E5%85%A5%E6%B5%8B%E8%AF%95/">
-            <span>写一个本地消息表组件 —— 4. 接入测试</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="写一个本地消息表组件 —— 3. 失败消息补偿">
-        <div class="time-m-d">02-16</div>
-        <div class="title">
-          <a href="/2024/02/16/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-3-%E5%A4%B1%E8%B4%A5%E6%B6%88%E6%81%AF%E8%A1%A5%E5%81%BF/">
-            <span>写一个本地消息表组件 —— 3. 失败消息补偿</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="写一个本地消息表组件 —— 2. 发消息">
-        <div class="time-m-d">02-16</div>
-        <div class="title">
-          <a href="/2024/02/16/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-2-%E5%8F%91%E6%B6%88%E6%81%AF/">
-            <span>写一个本地消息表组件 —— 2. 发消息</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="每年问自己40个问题 —— Obsidian">
-        <div class="time-m-d">02-16</div>
-        <div class="title">
-          <a href="/2024/02/16/%E6%AF%8F%E5%B9%B4%E9%97%AE%E8%87%AA%E5%B7%B140%E4%B8%AA%E9%97%AE%E9%A2%98-Obsidian/">
-            <span>每年问自己40个问题 —— Obsidian</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="写一个本地消息表组件 —— 1. 写消息表">
-        <div class="time-m-d">02-10</div>
-        <div class="title">
-          <a href="/2024/02/10/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-1-%E5%86%99%E6%B6%88%E6%81%AF%E8%A1%A8/">
-            <span>写一个本地消息表组件 —— 1. 写消息表</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="写一个本地消息表组件 —— 0. 理论">
-        <div class="time-m-d">01-28</div>
-        <div class="title">
-          <a href="/2024/01/28/%E5%86%99%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8%E7%BB%84%E4%BB%B6-%E2%80%94%E2%80%94-0-%E7%90%86%E8%AE%BA/">
-            <span>写一个本地消息表组件 —— 0. 理论</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="RocketMQ消费限流">
-        <div class="time-m-d">01-20</div>
-        <div class="title">
-          <a href="/2024/01/20/RocketMQ%E6%B6%88%E8%B4%B9%E9%99%90%E6%B5%81/">
-            <span>RocketMQ消费限流</span>
-          </a>
-        </div>
-      </div>
-    
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+  <!-- 标签页 url形式：https://yoursite/tags/ -->
+  <div class="container tag-index">
+    <div>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RocketMQ/" rel="tag">RocketMQ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" rel="tag">分布式事务</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%AC%E5%9C%B0%E6%B6%88%E6%81%AF%E8%A1%A8/" rel="tag">本地消息表</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%99%90%E6%B5%81/" rel="tag">限流</a><span class="tag-list-count">1</span></li></ul>
+    </div>
   </div>
-</div>
+  
+
+  
+
+  
+
+  
+
+  
 
         
 <div class="footer">
@@ -453,6 +413,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%A0%87%E7%AD%BE + '&url=' + https%3A%2F%2Fb-dttb.github.io%2Ftags%2Findex.html + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://b-dttb.github.io/tags/index.html" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
