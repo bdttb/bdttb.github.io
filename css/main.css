@@ -1485,7 +1485,7 @@ a:hover {
 }
 .post-view {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--color-text-a);
   padding-bottom: 30px;
